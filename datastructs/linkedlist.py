@@ -32,9 +32,11 @@ class linkedlist:
 
     def delete_node(self, data: int):
         curr_node = self.head
-
-        if curr_node.data == data:
-            self.head = curr_node.next
+        if curr_node is not None:
+            if curr_node.data == data:
+                self.head = curr_node.next
+                return
+        else:
             return
         prev_node = self.head
         curr_node = curr_node.next
@@ -56,3 +58,21 @@ class linkedlist:
     def delete_all(self, data):
         while self.contains(data):
             self.delete_node(data)
+
+    def get_length_recursive(self) -> int:
+        curr_node = self.head
+        return self.get_length(curr_node)
+
+    def get_length(self, node) -> int:
+        if node is None:
+            return 0
+        else:
+            return 1 + self.get_length(node.next)
+
+    def get_length_iterative(self) -> int:
+        curr_node = self.head
+        count = 0
+        while curr_node is not None:
+            count += 1
+            curr_node = curr_node.next
+        return count

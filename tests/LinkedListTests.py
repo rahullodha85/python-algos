@@ -22,12 +22,20 @@ class LinkedListTests(unittest.TestCase):
         self.assertTrue(list.contains(3))
         self.assertTrue(not list.contains(2))
 
+    def test_containt_empty_list(self):
+        list = linkedlist()
+        self.assertTrue(not list.contains(1))
+
     def test_delete(self):
         list = linkedlist(2)
         list.append(3)
         list.append(4)
         list.delete_node(3)
         self.assertTrue(not list.contains(3))
+
+    def test_delete_empty_list(self):
+        list = linkedlist()
+        list.delete_node(1)
 
     def test_delete_all(self):
         list = linkedlist(2)
@@ -36,3 +44,23 @@ class LinkedListTests(unittest.TestCase):
         list.append(3)
         list.delete_all(3)
         self.assertTrue(not list.contains(3))
+
+    def test_count_recursive(self):
+        list = linkedlist(1)
+        for i in range(4):
+            list.append(1)
+        self.assertEqual(list.get_length_recursive(), 5)
+
+    def test_count_iterative(self):
+        list = linkedlist(1)
+        for i in range(4):
+            list.append(1)
+        self.assertEqual(list.get_length_iterative(), 5)
+
+    def test_count_recursive_empty_list(self):
+        list = linkedlist()
+        self.assertEqual(list.get_length_recursive(), 0)
+
+    def test_count_iterative_empty_list(self):
+        list = linkedlist()
+        self.assertEqual(list.get_length_iterative(), 0)
