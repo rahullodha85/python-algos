@@ -47,7 +47,7 @@ class linkedlist:
             curr_node = curr_node.next
             prev_node = prev_node.next
 
-    def contains(self, data) -> bool:
+    def contains_iterative(self, data) -> bool:
         curr_node = self.head
         while curr_node is not None:
             if curr_node.data == data:
@@ -55,8 +55,20 @@ class linkedlist:
             curr_node = curr_node.next
         return False
 
+    def contains_recursive(self, data) -> bool:
+        self.contains(data, self.head)
+
+    def contains(self, data, node) -> bool:
+        if node is None:
+            return False
+        else:
+            if node.data == data:
+                return True
+            else:
+                return False or self.contains(data, node.next)
+
     def delete_all(self, data):
-        while self.contains(data):
+        while self.contains_iterative(data):
             self.delete_node(data)
 
     def get_length_recursive(self) -> int:

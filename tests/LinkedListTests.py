@@ -14,24 +14,32 @@ class LinkedListTests(unittest.TestCase):
         self.assertEqual(list.head.data, 5)
         self.assertTrue(list.head.next is None)
 
-    def test_contains(self):
+    def test_contains_iterative(self):
         list = linkedlist(5)
         list.append(3)
         list.insert_front(1)
-        self.assertTrue(list.contains(1))
-        self.assertTrue(list.contains(3))
-        self.assertTrue(not list.contains(2))
+        self.assertTrue(list.contains_iterative(1))
+        self.assertTrue(list.contains_iterative(3))
+        self.assertTrue(not list.contains_iterative(2))
+
+    def test_contains_recursive(self):
+        list = linkedlist(5)
+        list.append(3)
+        list.insert_front(1)
+        self.assertTrue(list.contains_recursive(1))
+        self.assertTrue(list.contains_recursive(3))
+        self.assertTrue(not list.contains_recursive(2))
 
     def test_containt_empty_list(self):
         list = linkedlist()
-        self.assertTrue(not list.contains(1))
+        self.assertTrue(not list.contains_iterative(1))
 
     def test_delete(self):
         list = linkedlist(2)
         list.append(3)
         list.append(4)
         list.delete_node(3)
-        self.assertTrue(not list.contains(3))
+        self.assertTrue(not list.contains_iterative(3))
 
     def test_delete_empty_list(self):
         list = linkedlist()
@@ -43,7 +51,7 @@ class LinkedListTests(unittest.TestCase):
         list.append(4)
         list.append(3)
         list.delete_all(3)
-        self.assertTrue(not list.contains(3))
+        self.assertTrue(not list.contains_iterative(3))
 
     def test_count_recursive(self):
         list = linkedlist(1)
