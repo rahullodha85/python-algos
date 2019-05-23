@@ -15,6 +15,9 @@ class linkedlist:
     def append(self, data: int):
         curr_node = self.head
         new_node = Node(data)
+        if self.head is None:
+            self.head = new_node
+            return
         while curr_node.next is not None:
             curr_node = curr_node.next
         curr_node.next = new_node
@@ -56,7 +59,7 @@ class linkedlist:
         return False
 
     def contains_recursive(self, data) -> bool:
-        self.contains(data, self.head)
+        return self.contains(data, self.head)
 
     def contains(self, data, node) -> bool:
         if node is None:
@@ -88,3 +91,14 @@ class linkedlist:
             count += 1
             curr_node = curr_node.next
         return count
+
+    def get_nth_element(self, index)-> int:
+        count = 0
+        curr_node = self.head
+        while curr_node:
+            if count == index:
+                return curr_node.data
+            count += 1
+            curr_node = curr_node.next
+        assert False
+        return 0

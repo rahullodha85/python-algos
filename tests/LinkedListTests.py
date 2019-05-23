@@ -72,3 +72,13 @@ class LinkedListTests(unittest.TestCase):
     def test_count_iterative_empty_list(self):
         list = linkedlist()
         self.assertEqual(list.get_length_iterative(), 0)
+
+    def test_get_nth_element(self):
+        list = linkedlist()
+        list.append(1)
+        self.assertEqual(list.get_nth_element(0), 1)
+
+    def test_get_nth_element_non_existing_index(self):
+        list = linkedlist()
+        list.append(1)
+        self.assertRaises(AssertionError)
