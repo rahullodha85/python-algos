@@ -117,3 +117,15 @@ class linkedlist:
             first = first.next
             second = second.next
         return second.data
+
+    def middle_node(self) -> int:
+        slow = self.head
+        fast = self.head
+
+        while fast:
+            if fast and fast.next:
+                slow = slow.next
+                fast = fast.next.next
+            else:
+                fast = fast.next
+        return slow.data

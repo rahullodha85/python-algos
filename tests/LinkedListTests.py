@@ -95,3 +95,24 @@ class LinkedListTests(unittest.TestCase):
     def test_get_nth_index_larger_than_list_length(self):
         list = linkedlist()
         self.assertRaises(AssertionError(), list.nth_node_from_end(1))
+
+    def test_middle_node_odd_nodes(self):
+        list = linkedlist()
+        list.append(1)
+        list.append(2)
+        list.append(3)
+        list.append(4)
+        list.append(5)
+
+        self.assertEqual(3, list.middle_node())
+
+    def test_middle_node_even_nodes(self):
+        list = linkedlist()
+        list.append(1)
+        list.append(2)
+        list.append(3)
+        list.append(4)
+        list.append(5)
+        list.append(6)
+
+        self.assertEqual(4, list.middle_node())
