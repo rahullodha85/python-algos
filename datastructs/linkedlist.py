@@ -102,3 +102,18 @@ class linkedlist:
             curr_node = curr_node.next
         assert False
         return 0
+
+    def nth_node_from_end(self, n) -> int:
+        first = self.head
+        second = self.head
+        for index in range(0, n):
+            if first:
+                first = first.next
+            else:
+                assert False
+                return 0
+
+        while first:
+            first = first.next
+            second = second.next
+        return second.data
