@@ -123,15 +123,15 @@ class LinkedListTests(unittest.TestCase):
         list.append(2)
         list.append(1)
 
-        self.assertEqual(2, list.get_frequency(1))
+        self.assertEqual(2, list.get_frequency_iterative(1))
 
     def test_get_frequency_empty_list(self):
         list = linkedlist()
 
-        self.assertEqual(0, list.get_frequency(1))
+        self.assertEqual(0, list.get_frequency_iterative(1))
 
     def test_get_frequency_no_number(self):
         list = linkedlist()
         list.append(2)
 
-        self.assertEqual(0, list.get_frequency(1))
+        self.assertEqual(0, list.get_frequency_iterative(1))

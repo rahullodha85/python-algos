@@ -130,7 +130,7 @@ class linkedlist:
                 fast = fast.next
         return slow.data
 
-    def get_frequency(self, data) -> int:
+    def get_frequency_iterative(self, data) -> int:
         curr = self.head
         count = 0
 
