@@ -142,3 +142,12 @@ class linkedlist:
             return count
         else:
             return count
+
+    def get_frequency_recursive(self, node, data) -> int:
+        if node:
+            if node.data == data:
+                return 1 + self.get_frequency_recursive(node.next, data)
+            else:
+                return self.get_frequency_recursive(node.next, data)
+        else:
+            return 0

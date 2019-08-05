@@ -135,3 +135,22 @@ class LinkedListTests(unittest.TestCase):
         list.append(2)
 
         self.assertEqual(0, list.get_frequency_iterative(1))
+
+    def test_get_frequency_recursive(self):
+        list = linkedlist()
+        list.append(1)
+        list.append(2)
+        list.append(1)
+
+        self.assertEqual(2, list.get_frequency_recursive(list.head, 1))
+
+    def test_get_frequency_recursive_empty_list(self):
+        list = linkedlist()
+
+        self.assertEqual(0, list.get_frequency_recursive(list.head, 1))
+
+    def test_get_frequency_recursive_no_number(self):
+        list = linkedlist()
+        list.append(2)
+
+        self.assertEqual(0, list.get_frequency_recursive(list.head, 1))
