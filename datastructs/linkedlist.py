@@ -129,3 +129,16 @@ class linkedlist:
             else:
                 fast = fast.next
         return slow.data
+
+    def get_frequency(self, data) -> int:
+        curr = self.head
+        count = 0
+
+        if curr:
+            while curr:
+                if curr.data == data:
+                    count += 1
+                curr = curr.next
+            return count
+        else:
+            return count

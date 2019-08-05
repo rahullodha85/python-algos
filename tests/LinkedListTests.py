@@ -116,3 +116,22 @@ class LinkedListTests(unittest.TestCase):
         list.append(6)
 
         self.assertEqual(4, list.middle_node())
+
+    def test_get_frequency(self):
+        list = linkedlist()
+        list.append(1)
+        list.append(2)
+        list.append(1)
+
+        self.assertEqual(2, list.get_frequency(1))
+
+    def test_get_frequency_empty_list(self):
+        list = linkedlist()
+
+        self.assertEqual(0, list.get_frequency(1))
+
+    def test_get_frequency_no_number(self):
+        list = linkedlist()
+        list.append(2)
+
+        self.assertEqual(0, list.get_frequency(1))
