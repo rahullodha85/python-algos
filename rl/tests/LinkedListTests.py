@@ -1,6 +1,6 @@
 import unittest
 
-from datastructs.linkedlist import linkedlist
+from rl.datastructs.linkedlist import linkedlist
 
 
 class LinkedListTests(unittest.TestCase):
@@ -72,3 +72,85 @@ class LinkedListTests(unittest.TestCase):
     def test_count_iterative_empty_list(self):
         list = linkedlist()
         self.assertEqual(list.get_length_iterative(), 0)
+
+    def test_get_nth_element(self):
+        list = linkedlist()
+        list.append(1)
+        self.assertEqual(list.get_nth_element(0), 1)
+
+    def test_get_nth_element_non_existing_index(self):
+        list = linkedlist()
+        list.append(1)
+        self.assertRaises(AssertionError)
+
+    def test_get_nth_from_end(self):
+        list = linkedlist()
+        list.append(1)
+        list.append(2)
+        list.append(3)
+        list.append(4)
+        self.assertEqual(list.nth_node_from_end(2), 3)
+        self.assertEqual(list.nth_node_from_end(1), 4)
+
+    # def test_get_nth_index_larger_than_list_length(self):
+    #     list = linkedlist()
+    #     self.assertRaises(AssertionError(), list.nth_node_from_end(1))
+
+    def test_middle_node_odd_nodes(self):
+        list = linkedlist()
+        list.append(1)
+        list.append(2)
+        list.append(3)
+        list.append(4)
+        list.append(5)
+
+        self.assertEqual(3, list.middle_node())
+
+    def test_middle_node_even_nodes(self):
+        list = linkedlist()
+        list.append(1)
+        list.append(2)
+        list.append(3)
+        list.append(4)
+        list.append(5)
+        list.append(6)
+
+        self.assertEqual(4, list.middle_node())
+
+    def test_get_frequency(self):
+        list = linkedlist()
+        list.append(1)
+        list.append(2)
+        list.append(1)
+
+        self.assertEqual(2, list.get_frequency_iterative(1))
+
+    def test_get_frequency_empty_list(self):
+        list = linkedlist()
+
+        self.assertEqual(0, list.get_frequency_iterative(1))
+
+    def test_get_frequency_no_number(self):
+        list = linkedlist()
+        list.append(2)
+
+        self.assertEqual(0, list.get_frequency_iterative(1))
+
+    def test_get_frequency_recursive(self):
+        list = linkedlist()
+        list.append(1)
+        list.append(2)
+        list.append(1)
+
+        self.assertEqual(2, list.get_frequency_recursive(list.head, 1))
+
+    def test_get_frequency_recursive_empty_list(self):
+        list = linkedlist()
+
+        self.assertEqual(0, list.get_frequency_recursive(list.head, 1))
+
+    def test_get_frequency_recursive_no_number(self):
+        list = linkedlist()
+        list.append(2)
+
+        self.assertEqual(0, list.get_frequency_recursive(list.head, 1))
