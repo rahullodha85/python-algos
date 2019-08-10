@@ -151,3 +151,17 @@ class linkedlist:
                 return self.get_frequency_recursive(node.next, data)
         else:
             return 0
+
+    def detect_loop(self) -> bool:
+        if not self.head:
+            return False
+        slow = self.head
+        fast = self.head
+        while fast and fast.next:
+            slow = slow.next
+            fast = fast.next.next
+            if slow == fast:
+                return True
+        return False
+
+

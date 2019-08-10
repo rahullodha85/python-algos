@@ -154,3 +154,32 @@ class LinkedListTests(unittest.TestCase):
         list.append(2)
 
         self.assertEqual(0, list.get_frequency_recursive(list.head, 1))
+
+    def test_detect_loop_empty_list(self):
+        list = linkedlist()
+        self.assertFalse(list.detect_loop())
+
+    def test_no_loop_list(self):
+        list = linkedlist(1)
+        list.append(2)
+        list.append(3)
+        list.append(4)
+        list.append(4)
+        list.append(4)
+        list.append(4)
+        list.append(4)
+
+        self.assertFalse(list.detect_loop())
+
+    def test_loop(self):
+        list = linkedlist(1)
+        list.append(2)
+        list.append(3)
+        list.append(4)
+        list.append(4)
+        list.append(4)
+
+        curr = list.head
+        curr.next.next.next.next = curr.next
+
+        self.assertTrue(list.detect_loop())
