@@ -196,3 +196,22 @@ class LinkedListTests(unittest.TestCase):
         curr.next.next.next.next = curr.next
 
         self.assertEqual(3, list.length_of_loop())
+
+    def test_delete_duplicates(self):
+        list = linkedlist(1)
+        list.append(2)
+        list.append(2)
+        list.append(2)
+        list.append(2)
+        list.append(3)
+
+        dict = list.remove_duplicates()
+
+        for key in dict:
+            self.assertEqual(1, list.get_frequency_iterative(key))
+
+    def test_delete_duplicates_empty_list(self):
+        list = linkedlist()
+        dict = list.remove_duplicates()
+
+        self.assertEqual(0, dict.keys().__len__())

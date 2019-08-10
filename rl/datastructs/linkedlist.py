@@ -183,3 +183,20 @@ class linkedlist:
                     if slow == fast:
                         break
                 return loop_length_count
+
+    def remove_duplicates(self) -> dict:
+        if not self.head:
+            return {}
+        else:
+            curr = self.head
+            dict = {}
+            while curr:
+                if curr.data in dict.keys():
+                    dict.update({curr.data: dict.get(curr.data) + 1})
+                else:
+                    dict.update({curr.data: 1})
+                curr = curr.next
+            self.head = None
+            for key in dict:
+                self.append(key)
+            return dict
