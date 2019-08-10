@@ -183,3 +183,16 @@ class LinkedListTests(unittest.TestCase):
         curr.next.next.next.next = curr.next
 
         self.assertTrue(list.detect_loop())
+
+    def test_length_of_loop(self):
+        list = linkedlist(1)
+        list.append(2)
+        list.append(3)
+        list.append(4)
+        list.append(5)
+        list.append(6)
+
+        curr = list.head
+        curr.next.next.next.next = curr.next
+
+        self.assertEqual(3, list.length_of_loop())

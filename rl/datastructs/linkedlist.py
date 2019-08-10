@@ -164,4 +164,22 @@ class linkedlist:
                 return True
         return False
 
-
+    def length_of_loop(self) -> int:
+        if self.head:
+            slow = self.head
+            fast = self.head
+            while fast and fast.next:
+                slow = slow.next
+                fast = fast.next.next
+                if slow == fast:
+                    loop_detected = True
+                    break
+            loop_length_count = 0
+            if loop_detected:
+                while True:
+                    loop_length_count += 1
+                    slow = slow.next
+                    fast = fast.next.next
+                    if slow == fast:
+                        break
+                return loop_length_count
