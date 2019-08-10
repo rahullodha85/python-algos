@@ -151,3 +151,52 @@ class linkedlist:
                 return self.get_frequency_recursive(node.next, data)
         else:
             return 0
+
+    def detect_loop(self) -> bool:
+        if not self.head:
+            return False
+        slow = self.head
+        fast = self.head
+        while fast and fast.next:
+            slow = slow.next
+            fast = fast.next.next
+            if slow == fast:
+                return True
+        return False
+
+    def length_of_loop(self) -> int:
+        if self.head:
+            slow = self.head
+            fast = self.head
+            while fast and fast.next:
+                slow = slow.next
+                fast = fast.next.next
+                if slow == fast:
+                    loop_detected = True
+                    break
+            loop_length_count = 0
+            if loop_detected:
+                while True:
+                    loop_length_count += 1
+                    slow = slow.next
+                    fast = fast.next.next
+                    if slow == fast:
+                        break
+                return loop_length_count
+
+    def remove_duplicates(self) -> dict:
+        if not self.head:
+            return {}
+        else:
+            curr = self.head
+            dict = {}
+            while curr:
+                if curr.data in dict.keys():
+                    dict.update({curr.data: dict.get(curr.data) + 1})
+                else:
+                    dict.update({curr.data: 1})
+                curr = curr.next
+            self.head = None
+            for key in dict:
+                self.append(key)
+            return dict

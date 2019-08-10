@@ -154,3 +154,64 @@ class LinkedListTests(unittest.TestCase):
         list.append(2)
 
         self.assertEqual(0, list.get_frequency_recursive(list.head, 1))
+
+    def test_detect_loop_empty_list(self):
+        list = linkedlist()
+        self.assertFalse(list.detect_loop())
+
+    def test_no_loop_list(self):
+        list = linkedlist(1)
+        list.append(2)
+        list.append(3)
+        list.append(4)
+        list.append(4)
+        list.append(4)
+        list.append(4)
+        list.append(4)
+
+        self.assertFalse(list.detect_loop())
+
+    def test_loop(self):
+        list = linkedlist(1)
+        list.append(2)
+        list.append(3)
+        list.append(4)
+        list.append(4)
+        list.append(4)
+
+        curr = list.head
+        curr.next.next.next.next = curr.next
+
+        self.assertTrue(list.detect_loop())
+
+    def test_length_of_loop(self):
+        list = linkedlist(1)
+        list.append(2)
+        list.append(3)
+        list.append(4)
+        list.append(5)
+        list.append(6)
+
+        curr = list.head
+        curr.next.next.next.next = curr.next
+
+        self.assertEqual(3, list.length_of_loop())
+
+    def test_delete_duplicates(self):
+        list = linkedlist(1)
+        list.append(2)
+        list.append(2)
+        list.append(2)
+        list.append(2)
+        list.append(3)
+
+        dict = list.remove_duplicates()
+
+        for key in dict:
+            self.assertEqual(1, list.get_frequency_iterative(key))
+
+    def test_delete_duplicates_empty_list(self):
+        list = linkedlist()
+        dict = list.remove_duplicates()
+
+        self.assertEqual(0, dict.keys().__len__())
