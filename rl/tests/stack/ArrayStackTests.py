@@ -27,3 +27,11 @@ class StackTests(unittest.TestCase):
         data = self.stack.pop()
 
         self.assertIsNone(data)
+
+    def test_stack_is_empty(self):
+        self.assertTrue(self.stack.is_empty())
+
+    def test_stack_is_empty_non_empty_stack(self):
+        self.stack.push(1)
+
+        self.assertFalse(self.stack.is_empty())

@@ -10,5 +10,8 @@ class Stack(object):
         self.__stack.append(data)
 
     def pop(self):
-        if self.get_length() > 0 :
+        if not self.is_empty():
             return self.__stack.pop(0)
+
+    def is_empty(self):
+        return self.get_length() == 0
