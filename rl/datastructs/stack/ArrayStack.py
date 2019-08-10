@@ -15,3 +15,7 @@ class Stack(object):
 
     def is_empty(self):
         return self.get_length() == 0
+
+    def peek(self):
+        if not self.is_empty():
+            return self.__stack[self.__stack.__len__() - 1]
