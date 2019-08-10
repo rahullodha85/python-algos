@@ -15,6 +15,9 @@ class linkedlist:
     def append(self, data: int):
         curr_node = self.head
         new_node = Node(data)
+        if self.head is None:
+            self.head = new_node
+            return
         while curr_node.next is not None:
             curr_node = curr_node.next
         curr_node.next = new_node
@@ -56,7 +59,7 @@ class linkedlist:
         return False
 
     def contains_recursive(self, data) -> bool:
-        self.contains(data, self.head)
+        return self.contains(data, self.head)
 
     def contains(self, data, node) -> bool:
         if node is None:
@@ -88,3 +91,63 @@ class linkedlist:
             count += 1
             curr_node = curr_node.next
         return count
+
+    def get_nth_element(self, index)-> int:
+        count = 0
+        curr_node = self.head
+        while curr_node:
+            if count == index:
+                return curr_node.data
+            count += 1
+            curr_node = curr_node.next
+        assert False
+        return 0
+
+    def nth_node_from_end(self, n) -> int:
+        first = self.head
+        second = self.head
+        for index in range(0, n):
+            if first:
+                first = first.next
+            else:
+                assert False
+                return 0
+
+        while first:
+            first = first.next
+            second = second.next
+        return second.data
+
+    def middle_node(self) -> int:
+        slow = self.head
+        fast = self.head
+
+        while fast:
+            if fast and fast.next:
+                slow = slow.next
+                fast = fast.next.next
+            else:
+                fast = fast.next
+        return slow.data
+
+    def get_frequency_iterative(self, data) -> int:
+        curr = self.head
+        count = 0
+
+        if curr:
+            while curr:
+                if curr.data == data:
+                    count += 1
+                curr = curr.next
+            return count
+        else:
+            return count
+
+    def get_frequency_recursive(self, node, data) -> int:
+        if node:
+            if node.data == data:
+                return 1 + self.get_frequency_recursive(node.next, data)
+            else:
+                return self.get_frequency_recursive(node.next, data)
+        else:
+            return 0
