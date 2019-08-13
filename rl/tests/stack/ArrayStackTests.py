@@ -17,10 +17,13 @@ class StackTests(unittest.TestCase):
 
         self.assertEqual(1, self.stack.get_length())
 
-    def test_pop_stacl(self):
+    def test_pop_stacK(self):
         self.stack.push(1)
-        data = self.stack.pop()
+        self.stack.push(2)
 
+        data = self.stack.pop()
+        self.assertEqual(2, data)
+        data = self.stack.pop()
         self.assertEqual(1, data)
 
     def test_pop_stack_empty(self):
