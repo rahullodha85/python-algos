@@ -21,3 +21,25 @@ class StackUsage():
                     return False
 
         return stack.is_empty()
+
+    def next_greater_element(self, data) -> dict:
+        stack = Stack()
+
+        return_dict = {}
+        for next in data:
+            if not stack.is_empty():
+                element = stack.pop()
+
+                while element < next:
+                    return_dict.update({element: next})
+                    if stack.is_empty():
+                        break
+                    element = stack.pop()
+
+                if element > next:
+                    stack.push(element)
+
+            else:
+                stack.push(next)
+
+        return return_dict
