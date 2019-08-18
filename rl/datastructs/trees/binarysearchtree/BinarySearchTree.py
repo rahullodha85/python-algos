@@ -27,4 +27,23 @@ class BinarySearchTree:
         else:
             return self.__search(node.right, data)
 
+    def insert(self, data):
+        if self.root is None:
+            self.root = TreeNode(data)
+        else:
+            self.__insert(self.root, data)
 
+    def __insert(self, node: TreeNode, data):
+        if data == node.data:
+            return
+        else:
+            if data < node.data:
+                if node.left is None:
+                    node.left = TreeNode(data)
+                else:
+                    self.__insert(node.left, data)
+            else:
+                if node.right is None:
+                    node.right = TreeNode(data)
+                else:
+                    self.__insert(node.right, data)
