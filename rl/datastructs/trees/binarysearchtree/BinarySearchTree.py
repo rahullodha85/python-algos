@@ -16,4 +16,15 @@ class BinarySearchTree:
     def is_empty(self) -> bool:
         return self.root is None
 
+    def search(self, data) -> TreeNode:
+        return self.__search(self.root, data=data)
+
+    def __search(self, node: TreeNode, data) -> TreeNode:
+        if node is None or node.data == data:
+            return node
+        if data < node.data:
+            return self.__search(node.left, data)
+        else:
+            return self.__search(node.right, data)
+
 
