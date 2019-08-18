@@ -1,22 +1,22 @@
 import unittest
 
-from rl.datastructs.trees.binarytree.BinaryTree import TreeNode, BinaryTree
+from rl.datastructs.trees.binarysearchtree.BinarySearchTree import BinarySearchTree
 
 
-class BinaryTreeTests(unittest.TestCase):
+class BinarySearchTreeTests(unittest.TestCase):
 
     def test_init_empty(self):
-        tree = BinaryTree()
+        tree = BinarySearchTree()
         self.assertIsNone(tree.root)
 
     def test_init(self):
-        tree = BinaryTree(2)
+        tree = BinarySearchTree(2)
         self.assertEqual(2, tree.root.data)
         self.assertIsNone(tree.root.left)
         self.assertIsNone(tree.root.right)
 
     def test_is_empty_empty_tree(self):
-        self.assertTrue(BinaryTree().is_empty())
+        self.assertTrue(BinarySearchTree().is_empty())
 
     def test_is_empty_not_empty_tree(self):
-        self.assertFalse(BinaryTree(2).is_empty())
+        self.assertFalse(BinarySearchTree(2).is_empty())

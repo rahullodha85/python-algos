@@ -5,7 +5,7 @@ class TreeNode:
         self.right = None
 
 
-class BinaryTree:
+class BinarySearchTree:
 
     def __init__(self, data=None):
         if data:
