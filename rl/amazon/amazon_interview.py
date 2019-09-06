@@ -29,3 +29,32 @@ def optimalUtilization(deviceCapacity, foregroundAppList, backgroundAppList):
 print(optimalUtilization(10, [[1,3],[2,5],[3,7],[4,10]], [[1,2],[2,3],[3,4],[4,5]]))
 print(optimalUtilization(7, [[1,2],[2,4],[3,6]], [[1,2]]))
 print(optimalUtilization(16, [[2,7],[3,14]], [[2,10],[3,14]]))
+
+
+def IDsOfPackages(truckSpace, packagesSpace):
+    # WRITE YOUR CODE HERE
+
+    target = truckSpace - 30  # target to subtract from (leaving 30 space for safety)
+    output = set()  # output list to be returned (set to remove duplicate pairs)
+    largest = -1 # placeholder for largest value comparison
+
+    for index in range(packagesSpace.__len__()):
+        test = target - packagesSpace[index]
+        if list(packagesSpace).__contains__(test):
+            if test > largest or packagesSpace[index] > largest:
+                output.clear()
+                if packagesSpace[index] > test:
+                    largest = packagesSpace[index]
+                else:
+                    largest = test
+                output.add(index)
+                packagesSpace[index] = -1 #removing value just in case value is duplicate in list
+                output.add(packagesSpace.index(test))
+
+    return list(output)
+
+
+print(IDsOfPackages(250, [100, 180, 40, 120, 10]))
+
+
+print(IDsOfPackages(90, [1,10,30,30,60]))
