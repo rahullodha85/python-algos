@@ -1,6 +1,6 @@
 import unittest
 
-from rl.ctci.arraysstrings.IsPermutation import IsPermutation
+from rl.ctci.arraysstrings.strings.IsPermutation import IsPermutation
 
 
 class IsPermutationTests(unittest.TestCase):

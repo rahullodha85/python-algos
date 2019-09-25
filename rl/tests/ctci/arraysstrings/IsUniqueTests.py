@@ -1,6 +1,6 @@
 import unittest
 
-from rl.ctci.arraysstrings.IsUnique import IsUnique
+from rl.ctci.arraysstrings.strings.IsUnique import IsUnique
 
 
 class IsUniqueTests(unittest.TestCase):
