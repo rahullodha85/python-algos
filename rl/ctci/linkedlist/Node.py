@@ -20,8 +20,3 @@ class Node:
         while curr:
             print(curr.data)
             curr = curr.next
-
-test = Node(1)
-test.print_all()
-test.add(3)
-test.print_all()
