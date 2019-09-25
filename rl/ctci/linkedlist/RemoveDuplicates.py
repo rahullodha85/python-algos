@@ -3,7 +3,7 @@ from rl.ctci.linkedlist.Node import Node
 
 class RemoveDuplicates:
 
-    def solution_with_set(self, head: Node) -> Node:
+    def solution_with_extra_space(self, head: Node) -> Node:
 
         curr_node = head
 
