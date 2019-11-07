@@ -19,16 +19,32 @@ class RemoveDuplicates:
             curr_node = curr_node.next
         return dummy.next
 
+    def solution(self, head: Node) -> Node:
+        current = head
+        runner = head
+
+        while current:
+            while runner:
+                if runner.next:
+                    if runner.data == runner.next.data:
+                        runner.next = runner.next.next
+                    else:
+                        runner = runner.next
+                else:
+                    break
+            current = current.next
+        return head
+
 test = Node(1)
 test.add(1)
 test.add(2)
 test.print_all()
-test = RemoveDuplicates().solution_with_set(test)
+test = RemoveDuplicates().solution(test)
 test.print_all()
 
 test = Node(2)
 test.add(2)
 test.add(1)
 test.print_all()
-test = RemoveDuplicates().solution_with_set(test)
+test = RemoveDuplicates().solution(test)
 test.print_all()
