@@ -10,17 +10,21 @@ class ThreeSum:
                         output.append([nums[i], nums[j], nums[k]])
         return output
 
-    def optimum(self, nums: [int]) -> [[int]]:
+    def optimum(self, nums):
         output = []
-        for i in range(nums.__len__()-1):
+        for i in range(len(nums)-1):
 
             s = set()
             temp_sum = 0 - nums[i]
-            for j in range(i+1, nums.__len__()):
+            for j in range(i+1, len(nums)):
                 temp = temp_sum - nums[j]
                 if temp in s:
-                    output.append([nums[i], nums[j], temp])
-                    break
+                    list = [nums[i], nums[j], temp]
+                    list.sort()
+                    if list not in output:
+                        output.append(list)
                 s.add(nums[j])
 
         return output
+
+print(ThreeSum().optimum([-1,0,1,2,-1,-4]))
