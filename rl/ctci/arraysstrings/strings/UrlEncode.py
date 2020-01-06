@@ -8,10 +8,10 @@ class UrlEncode:
                 count += 1
         for i in range(0, count*2):
            url.append('_')
-
+        skip = 0
         for i in range(url.__len__()-1, 0, -1):
-            if url[i] == '_':
-                pass
+            if skip < count*2:
+                skip+=1
             else:
                 if url[i] == ' ':
                     url[i+count*2]='0'
