@@ -13,3 +13,11 @@ class Solution:
             current = q.pop(0)
             if current:
                 for child in current.children:
+                    if not child.data:
+                        if child == end:
+                            return True
+                        else:
+                            child.data = True
+                            q.append(child)
+                current.data = True
+        return False
